@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author HuanQing
  * @since 2020-08-12
  */
-public class CollectionFrame {
+public class Case04CollectionFrame {
 
 	// 1.集合框架
 	// 1.1.Collection

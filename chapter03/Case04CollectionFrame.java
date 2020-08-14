@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -116,5 +117,66 @@ public class Case04CollectionFrame {
 		for(String trafficTool : c) {
 			System.out.print(trafficTool.toUpperCase() + " ");
 		}
+	}
+	
+	
+	
+	// 2.集合操作--线性表
+	// 2.1.List
+	// 2.1.1.ArrayList和LinkedList
+	// List接口是Collection的子接口，用于定义线性表数据结构。
+	// 可以将List理解为存放对象的数组，只不过其元素的个数可以动态地增加或减少。
+	// List接口的2个常见实现类为ArrayList和LinkedList，分别用动态数组和链表方式实现了List接口。
+	// 可以认为ArrayList和LinkedList的方法在逻辑上完全一样，只是在性能上有一定的差别。
+	// Arrayist更适合于随机访问，而LinkedList更适合于插入和删除。
+	// 在性能要求不是特别苛刻的情形下，可以忽略这个差别。
+	
+	// 2.1.2.get和set
+	// ArrayList除了继承Collection定义的方法外，还根据其线性表的数据结构定义了一系列方法，其中最常用的就是基于下标的get和set方法。
+	// E get(int index)：获取集合中给定下标对应的元素，下标从0开始。
+	// E set(int index, E element)：将给定的元素存入给定位置，并将原位置的元素返回。
+	
+	@Test
+	public void testGetAndSet() {
+		List<String> list = new ArrayList<>();
+		list.add("java");
+		list.add("cpp");
+		list.add("php");
+		list.add("c#");
+		list.add("objective-c");
+		
+		System.out.println(list);
+		
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		
+		list.set(1, "c++");						// 将第2个元素设置为c++
+		
+		System.out.println(list);
+		
+		list.set(1, list.set(3, list.get(1)));	// 将第2个和第4个元素换位置
+		
+		System.out.println(list);
+	}
+	
+	// 2.1.3.插入和删除
+	// List根据下标的操作还支持插入和删除操作。
+	// void add(int index, E element)：将给定的元素插入到指定位置，原位置及后续元素都顺序向后移动。
+	// E remove(int index)：删除给定位置的元素，并将被删除的元素返回。
+	
+	@Test
+	public void testAddAndRemove() {
+		List<String> list = new ArrayList<>();
+		list.add("java");
+		list.add("c#");
+		
+		System.out.println(list);
+		
+		list.add(1, "cpp");
+		System.out.println(list);		// [java, cpp, c#]
+		
+		list.remove(2);
+		System.out.println(list);		// [java, cpp]
 	}
 }

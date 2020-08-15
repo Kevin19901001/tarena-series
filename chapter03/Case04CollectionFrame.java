@@ -1,6 +1,7 @@
 ﻿package chapter03;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -208,5 +209,47 @@ public class Case04CollectionFrame {
 		// 连续删除元素
 		list.subList(3, 8).clear();
 		System.out.println(list);						// [0, 1, 2, 8, 9]
+	}
+	
+	// 2.1.5【List】List转换为数组
+	// List的toArray方法用于将集合转换为数组，但实际上该方法是在Collection中定义的，所以所有的集合都具备这个功能。
+	// 其有两个方法：
+	// Object[] toArray()
+	// <T> T[] toArray(T[] a)：该方法教常用，传入一个指定类型的数组，该数组的元素类型应该与集合的元素类型一致。
+	// 返回值则是转换后的数组，该数组会保留集合中所有的元素。
+	
+	@Test
+	public void testListToArray() {
+		List<String> list = new ArrayList<>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		
+		String[] strArr = list.toArray(new String[] {});
+		
+		System.out.println(Arrays.toString(strArr));
+	}
+	
+	// 2.1.6.【List】数组转换为List
+	// Arrays类提供了一个静态方法asList，使用该方法我们可以将一个数组转换为对应的List集合。
+	// static <T>List<T> asList<T...a>
+	// 返回的List的集合元素类型由传入的数组元素类型决定。
+	// 并且要注意的是，返回的集合，我们不能对其增删元素，否则会抛出异常。
+	// 并且对集合的元素进行修改，会影响数组对应的元素。
+	
+	@Test
+	public void testArrayToList() {
+		String[] strArr = {"A", "B", "C"};
+		List<String> list = Arrays.asList(strArr);
+		System.out.println(list);
+		System.out.println(list.getClass().getName());
+		//list.add("D");			// UnsupportedOperationException
+		
+		List<String> list1 = new ArrayList<>();
+		list1.addAll(Arrays.asList(strArr));
+		System.out.println(list1);
+		
+		list1.add("D");
+		System.out.println(list1);
 	}
 }

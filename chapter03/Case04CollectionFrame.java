@@ -250,6 +250,6 @@ public class Case04CollectionFrame {
 		System.out.println(list1);
 		
 		list1.add("D");
-		System.out.println(list1);
+		System.out.println(list1);	// [A, B, C, D]
 	}
 }

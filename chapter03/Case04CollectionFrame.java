@@ -179,4 +179,34 @@ public class Case04CollectionFrame {
 		list.remove(2);
 		System.out.println(list);		// [java, cpp]
 	}
+	
+	// 2.1.4【List】subList
+	// List的subList方法用于获取子List
+	// 需要注意的是，subList获取的List与原List占有相同的存储空间，对子List的操作会影响原List。
+	// List<E> subList(fromIndex, toIndex)
+	// fromIndex和toIndex是获取子List的首尾下标（前包括，后不包括）
+	
+	@Test
+	public void testSubList() {
+		List<Integer> list = new ArrayList<Integer>();
+		for(int i = 0; i < 10; i++) {
+			list.add(i);
+		}
+		
+		System.out.println(list);						// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+		
+		List<Integer> subList = list.subList(3, 8);
+		System.out.println(subList);					// [3, 4, 5, 6, 7]
+		
+		// subist(fromIndex, toIndex)截取的子List和原List占有相同的存储空间
+		for(int i = 0; i < subList.size(); i++) {
+			subList.set(i, subList.get(i)*10);
+		}
+		
+		System.out.println(list);						// [0, 1, 2, 30, 40, 50, 60, 70, 8, 9]
+		
+		// 连续删除元素
+		list.subList(3, 8).clear();
+		System.out.println(list);						// [0, 1, 2, 8, 9]
+	}
 }

@@ -3,10 +3,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
+
+import utils.Cell;
 
 /**
  * 4.集合框架：Collection，Iterator，泛型机制
@@ -252,4 +257,65 @@ public class Case04CollectionFrame {
 		list1.add("D");
 		System.out.println(list1);	// [A, B, C, D]
 	}
+	
+	
+	// 2.2.List排序
+	// 2.2.1.【List排序】Collections.sort方法实现排序
+	// Collections是集合的工具类，它提供了很多便于我们操作集合的方法，其中就有用于集合排序的sort方法。
+	// void sort(List<T> list)：对给定的结合元素进行自然排序
+	
+	@Test
+	public void testSort() {
+		List<Integer> list = new ArrayList<>();
+		Random r = new Random(1);
+		for(int i = 0; i < 10; i++) {
+			list.add(r.nextInt(100));
+		}
+		System.out.println(list);
+		
+		Collections.sort(list);
+		System.out.println(list);
+	}
+	
+	// 2.2.2【List排序】Comparable
+	// Collections的sort方法是对集合元素进行自然排序，那么两个元素对象之间就一定要有大小之分。
+	// 这个大小之分是如何界定的？实际上，在使用Collections的sort方法排序的集合元素都必须是Comparable接口的实现类。
+	// 该接口表示其子类是可比较的，因为实现该接口必须实现抽象方法int compareTo(T t)。该方法用于使当前对象与给定对象进行比较。
+	// 若当前对象大于给定对象，那么返回值应为大于0的整数；
+	// 若小于给定对象，那么返回值应为小于0的整数；
+	// 若两个对象相等，则应返回0
+	
+	@Test
+	public void testComparable() {
+		List<Cell> cells = new ArrayList<Cell>();
+		cells.add(new Cell(2, 3));
+		cells.add(new Cell(5, 1));
+		cells.add(new Cell(3, 2));
+		Collections.sort(cells);
+		System.out.println(cells);
+	}
+	
+	// 2.2.3.【List排序】Comparator
+	// 一旦java类实现了Comparable接口，其比较逻辑就已经确定；如果希望在排序的操作中临时指定比较规则，可以采用Comparator接口回调的方式。
+	// Comparator接口要求实现类必须重写其定义的方法：int compare(T o1, T o2)
+	// 该方法的返回值要求：若o1>o2则返回值应>0；若o1<o2则返回值应<0；若o1==o2则返回值应为0
+	
+	@Test
+	public void testCmparator() {
+		List<Cell> cells = new ArrayList<>();
+		cells.add(new Cell(2, 3));
+		cells.add(new Cell(5, 1));
+		cells.add(new Cell(3, 2));
+		Collections.sort(cells, new Comparator<Cell>() {
+			@Override
+			public int compare(Cell o1, Cell o2) {
+				// TODO Auto-generated method stub
+				return o1.getCol() - o2.getCol();
+			}
+		});
+		System.out.println(cells);
+	}
+	
+	
+	// 2.3.队列和栈
 }

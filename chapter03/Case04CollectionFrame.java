@@ -6,7 +6,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 import org.junit.Test;
@@ -157,7 +159,7 @@ public class Case04CollectionFrame {
 			System.out.println(list.get(i));
 		}
 		
-		list.set(1, "c++");						// 将第2个元素设置为c++
+		list.set(1, "c++");			// 将第2个元素设置为c++
 		
 		System.out.println(list);
 		
@@ -202,7 +204,7 @@ public class Case04CollectionFrame {
 		System.out.println(list);						// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 		
 		List<Integer> subList = list.subList(3, 8);
-		System.out.println(subList);					// [3, 4, 5, 6, 7]
+		System.out.println(subList);						// [3, 4, 5, 6, 7]
 		
 		// subist(fromIndex, toIndex)截取的子List和原List占有相同的存储空间
 		for(int i = 0; i < subList.size(); i++) {
@@ -255,7 +257,7 @@ public class Case04CollectionFrame {
 		System.out.println(list1);
 		
 		list1.add("D");
-		System.out.println(list1);	// [A, B, C, D]
+		System.out.println(list1);		// [A, B, C, D]
 	}
 	
 	
@@ -318,4 +320,31 @@ public class Case04CollectionFrame {
 	
 	
 	// 2.3.队列和栈
+	// 2.3.1.【队列和栈】Queue
+	// 队列（Queue）是常用的数据结构，可以将队列看成特殊的线性表，队列限制了对线性表的访问方式：
+	// 只能从线性表的一段添加（offer）元素，从另一端取出（poll）元素。
+	// 队列遵循先进先出的原则。
+	// JDK中提供了Queue接口，同时使得LinkedList实现了该接口，
+	// 选择LinkedList实现Queue的原因在于Queue经常要进行添加或删除操作，而LinkedList在这方面效率较高。
+	// Queue接口中的主要方法：
+	// boolean offer(E e)：将一个对象添加至队尾，如果添加成功则返回true；
+	// E poll()：从队首删除并返回一个元素
+	// E peek()：返回队首的元素（但并不删除）
+	
+	@Test
+	public void testQueue() {
+		Queue<String> queue = new LinkedList<>();
+		queue.offer("a");
+		queue.offer("b");
+		queue.offer("c");
+		System.out.println(queue);		// [a, b, c]
+		
+		String str = queue.peek();
+		System.out.println(str);		// a
+		
+		while(queue.size() > 0) {
+			str = queue.poll();
+			System.out.print(str + " ");	// a b c 
+		}
+	}
 }

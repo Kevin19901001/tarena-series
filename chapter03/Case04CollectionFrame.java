@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -345,6 +346,28 @@ public class Case04CollectionFrame {
 		while(queue.size() > 0) {
 			str = queue.poll();
 			System.out.print(str + " ");	// a b c 
+		}
+	}
+	
+	// 2.3.2【队列和栈】Deque
+	// Deque是Queue的字接口，定义了所谓“双端队列”即从队列的两端分别可以入队和出队，LinkedList实现了该接口。
+	// 如果将Deque限制为只能从一段入队和出队，则可实现“栈”（stack）的数据结构，对于栈而言，入栈称之为push，出栈称之为pop。
+	// 栈遵循“先进后出”的原则。
+	
+	@Test
+	public void testStack() {
+		Deque<String> deque = new LinkedList<>();
+		deque.push("a");
+		deque.push("b");
+		deque.push("c");
+		System.out.println(deque);		// [c, b, a]
+		
+		String str = deque.peek();
+		System.out.println(str);		// c
+		
+		while(deque.size() > 0) {
+			str = deque.pop();
+			System.out.print(str + " ");	// c b a 
 		}
 	}
 }

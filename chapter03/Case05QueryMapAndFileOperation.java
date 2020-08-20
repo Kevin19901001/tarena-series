@@ -1,4 +1,4 @@
-package chapter03;
+﻿package chapter03;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,5 +37,23 @@ public class Case05QueryMapAndFileOperation {
 		Emp emp = employees.get("张三");
 		System.out.println(emp);
 	}
+	
+	// 1.1.4.【Map接口】containsKey()方法
+	// Map接口中定义了判断某个key是否在Map中存在：
+	// boolean containsKey(Object key)：若Map中包含给定的key则返回true，否则返回false。
+	
+	@Test
+	public void testContainsKey() {
+		Map<String, Emp> employees = new HashMap<>();
+		employees.put("张三", new Emp("张三", 25, '男', 5000.00));
+		employees.put("李四", new Emp("李四", 21, '女', 6000.00));
+		
+		boolean has = employees.containsKey("李四");
+		System.out.print("是否有员工李四：" + has);
+	}
+	
+	
+	// 1.2.HashMap
+	// 1.2.1.【HashMap】Hash表原理
 	
 }

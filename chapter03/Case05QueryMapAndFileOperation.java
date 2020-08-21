@@ -56,4 +56,15 @@ public class Case05QueryMapAndFileOperation {
 	// 1.2.HashMap
 	// 1.2.1.【HashMap】Hash表原理
 	
+	// 1.2.2.【HashMap】hashCode方法
+	// 从HashMap的原理中我们可以看到，key的hashCode方法的返回值对HashMap存储元素时，会起着很重要的作用。
+	// 而hashCode()方法实际上是在Object中定义的。
+	// 那么应当妥善重写该方法：
+	// 对于重写了equals()方法的对象，一般要妥善地重写继承自Object类的hashCode()方法，
+	// （Object提供的hashCode()方法将返回该对象所在内存地址的整数形式）。
+	// 重写hashCode()方法时需注意两点：
+	// 其一：与equals()方法的一致性，即equals()方法比较，返回true的两个对象，其hashCode()方法返回值应该相同；
+	// 其二，hashCode()返回的数值应符合hash算法的要求，试想如果有很多对象的hashCode()方法返回值都相同，则会大大降低hash表的效率。
+	// 一般情况下，可以使用IDE提供的工具自动生成hashCode()方法。
+	
 }

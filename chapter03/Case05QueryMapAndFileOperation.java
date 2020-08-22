@@ -67,4 +67,10 @@ public class Case05QueryMapAndFileOperation {
 	// 其二，hashCode()返回的数值应符合hash算法的要求，试想如果有很多对象的hashCode()方法返回值都相同，则会大大降低hash表的效率。
 	// 一般情况下，可以使用IDE提供的工具自动生成hashCode()方法。
 	
+	// 1.2.3.【HashMap】装载因子及HashMap优化
+	// Capacity：容量，Hash表里bucket的数量，也就是散列数组大小。
+	// Initial capacity：初始容量，创建Hash表时，初始bucket的数量。默认构建容量是16，也可以使用特定容量。
+	// Load factory：加载因子，默认值是0.75（也就是75%），当向散列增加数据时，如果size/capacity的值大于Load Factory，则发生扩容，并且重新散列（rehash）
+	// 性能优化：加载因子较小时，散列查找性能会提高，同时也浪费了散列桶空间容量。
+	// 0.75是性能和空间相对平衡结果。在创建散列表时指定合理容量，减少rehash提高性能。
 }

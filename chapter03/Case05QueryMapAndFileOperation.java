@@ -73,4 +73,18 @@ public class Case05QueryMapAndFileOperation {
 	// Load factory：加载因子，默认值是0.75（也就是75%），当向散列增加数据时，如果size/capacity的值大于Load Factory，则发生扩容，并且重新散列（rehash）
 	// 性能优化：加载因子较小时，散列查找性能会提高，同时也浪费了散列桶空间容量。
 	// 0.75是性能和空间相对平衡结果。在创建散列表时指定合理容量，减少rehash提高性能。
+	
+	
+	// 1.3.Map的遍历
+	// 1.3.1.【Map的遍历】使用keySet()方法
+	// Map提供了3种遍历方式：
+	// -遍历所有的key
+	// -遍历所有的key-value对
+	// -遍历所有的value（不常用）
+	// 遍历所有key的方法：
+	// Set<key> keySet()：该方法会将当前Map中所有的key存入一个Set集合后返回。
+	
+	// 1.3.2.【Map的遍历】使用entrySet()方法
+	// 遍历所有键值对的方法：
+	// Set<key, value> entrySet()：该方法会将当前Map中每一组key-value对封装为一个Entry对象，并存入一个Set集合后返回。
 }

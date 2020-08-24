@@ -87,4 +87,11 @@ public class Case05QueryMapAndFileOperation {
 	// 1.3.2.【Map的遍历】使用entrySet()方法
 	// 遍历所有键值对的方法：
 	// Set<key, value> entrySet()：该方法会将当前Map中每一组key-value对封装为一个Entry对象，并存入一个Set集合后返回。
+	
+	
+	// 1.4.有序的Map
+	// 1.4.1.【有序的Map】LinkedHashMap实现有序的Map
+	// 使用Map接口的Hash表和链表实现，具有可预知的迭代顺序。此实现与HashMap的不同之处在于：
+	// -LinkedHashMap维护着一个双向循环链表。此链表定义了迭代顺序，该迭代顺序通常就是存放元素的顺序。
+	// 需要注意的是，如果在Map中新存入已有的key，那么key的位置不会发生改变，只是将value值替换。
 }

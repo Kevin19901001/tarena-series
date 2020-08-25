@@ -1,5 +1,6 @@
 ﻿package chapter03;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,4 +95,20 @@ public class Case05QueryMapAndFileOperation {
 	// 使用Map接口的Hash表和链表实现，具有可预知的迭代顺序。此实现与HashMap的不同之处在于：
 	// -LinkedHashMap维护着一个双向循环链表。此链表定义了迭代顺序，该迭代顺序通常就是存放元素的顺序。
 	// 需要注意的是，如果在Map中新存入已有的key，那么key的位置不会发生改变，只是将value值替换。
+	
+	
+	
+	// 2.文件操作File
+	// 2.1.创建File对象
+	// 2.1.1.【创建File对象】File(String pathname)
+	// java.io.File用于表示文件（目录），也就是说程序员可以通过File类在程序中操作硬盘上的文件和目录。
+	// File类只用于表示文件（目录）的信息（名称、大小等），不能对文件的内容进行访问。
+	// 构造方法：File(String pathname)：通过将给定路径名字符串转换成抽象路径名来创建一个新File实例。
+	// 抽象路径应尽量使用相对路径，并且目录的层级分隔符不要直接写“/”或“\”，应使用File.seperator这个常量表示，以避免不同系统带来的差异。
+	
+	@Test
+	public void testFile() {
+		File file = new File("demo" + File.separator + "HelloWorld.txt");
+		System.out.println(file);
+	}
 }

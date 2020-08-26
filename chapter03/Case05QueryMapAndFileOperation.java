@@ -111,4 +111,13 @@ public class Case05QueryMapAndFileOperation {
 		File file = new File("demo" + File.separator + "HelloWorld.txt");
 		System.out.println(file);
 	}
+	
+	// 2.1.2.【创建File对象】File(File parent, String child)：根据parent抽象路径名和child路径名字符串创建一个新File实例。
+	
+	@Test
+	public void testFile2() {
+		File parent = new File("demo");
+		File file = new File(parent, "HelloWoldr.txt");
+		System.out.println(file);
+	}
 }

@@ -120,4 +120,51 @@ public class Case05QueryMapAndFileOperation {
 		File file = new File(parent, "HelloWoldr.txt");
 		System.out.println(file);
 	}
+	
+	// 2.1.3.【创建File对象】isFile()方法
+	// File的isFile()方法用于判断当前File对象所表示的是否为一个文件
+	// boolean isFile()：返回值-当前File对象所表示是一个文件时返回true
+	@Test
+	public void testIsFile() {
+		File file = new File("demo" + File.separator + "HelloWorld.txt");
+		System.out.println(file + "是否是一个文件：" + file.isFile());	// false
+	}
+	
+	
+	// 2.2.【File表示文件信息】
+	// 2.2.1.【File表示文件信息】length()方法
+	// File的length()方法用于返回由此抽象路径名表示的文件长度（占用的字节量）
+	// long length()：返回值-当前File对象所表示的文件占用的字节量
+	@Test
+	public void testLength() {
+		File file = new File("demo" + File.separator + "HelloWorld.txt");
+		System.out.println(file + "占用字节量：" + file.length());
+	}
+	
+	// 2.2.2.【File表示文件信息】exists()方法
+	// File的exists()方法用于测试此抽象路径名表示的文件或目录是否存在
+	// boolean exists()：返回值：若File表示的文件或目录存在则返回true，否则返回false
+	
+	// 2.2.3.【File表示文件信息】createNewFile()方法
+	// File的createNewFile()方法用于当且仅当不存在具有此抽象路径名指定的名称的文件时，原子地创建由此抽象路径名指定的一个新的空文件。
+	// bolean createNewFile()：返回值-如果指定的文件不存在并成功地创建，则返回true，如果指定的文件已存在则返回false。
+	
+	// 2.2.4.【File表示文件信息】delete()方法
+	// File的delete()方法用于删除此抽象路径名表示的文件或目录。
+	// boolean delete()：返回值-当且仅当成功删除文件或目录时，返回true，否则返回false。
+	// 需要注意的是，若此File对象所表示的是一个目录时，在删除时需要保证此为空目录才可以成功删除（目录中不含有任何子项）。
+	@Test
+	public void testDeleteFile() {
+		File file = new File("demo" + File.separator + "HelloWorld.txt");
+		System.out.println(file.delete());	// false
+	}
+	
+	// 2.2.5.【File表示文件信息】isDirectory()方法
+	// File的isDirectory()方法用于判断当前File表示的是否为一个目录。
+	// boolean idDirectory()：返回值-当File对象表示的是一个目录时返回true，否则返回false。
+	@Test
+	public void testIsDirectory() {
+		File file = new File("demo");
+		System.out.println(file + "是否为一个目录：" + file.isDirectory());	// false
+	}
 }

@@ -147,7 +147,7 @@ public class Case05QueryMapAndFileOperation {
 	
 	// 2.2.3.【File表示文件信息】createNewFile()方法
 	// File的createNewFile()方法用于当且仅当不存在具有此抽象路径名指定的名称的文件时，原子地创建由此抽象路径名指定的一个新的空文件。
-	// bolean createNewFile()：返回值-如果指定的文件不存在并成功地创建，则返回true，如果指定的文件已存在则返回false。
+	// boolean createNewFile()：返回值-如果指定的文件不存在并成功地创建，则返回true，如果指定的文件已存在则返回false。
 	
 	// 2.2.4.【File表示文件信息】delete()方法
 	// File的delete()方法用于删除此抽象路径名表示的文件或目录。
@@ -167,4 +167,32 @@ public class Case05QueryMapAndFileOperation {
 		File file = new File("demo");
 		System.out.println(file + "是否为一个目录：" + file.isDirectory());	// false
 	}
+	
+	
+	// 2.3. File表示目录信息
+	// 2.3.1 【File表示目录信息】mkdir()方法
+	// File的mkdir()方法用于创建由此抽象路径指定的目录
+	// boolean mkdir()
+	// 当且仅当已创建目录时返回true，否则返回false
+	@Test
+	public void testMkDir() {
+		File dir = new File("myDir");
+		dir.mkdir();
+	}
+	
+	// 2.3.2 【File表示目录信息】mkdirs()方法
+	// File的mkdirs()方法用于创建此抽象路径名指定的目录，包括所有必须但不存在的父目录。
+	// 注意，此操作失败时也可能已经成功地创建了一部分必须的父目录。
+	// boolean mkdirs()：当且仅当已经创建目录以及所有必需的父目录时，返回true，否则返回false。
+	@Test
+	public void testMkDirs() {
+		File dir = new File("a" + File.separator + "b" + File.separator + "c");
+		dir.mkdirs();
+	}
+	
+	// 2.3.3 【File表示目录信息】delete()方法
+	// File的delete()方法用于删除由此抽象路径名表示的文件或目录
+	// boolean delete()：当且仅当成功删除文件或目录时，返回true，否则返回false。
+	// 需要注意的是，若此File对象所表示的是一个目录时，在删除时需要保证此为空目录，才可以成功删除。
+	
 }

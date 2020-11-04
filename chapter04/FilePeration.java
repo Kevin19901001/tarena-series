@@ -36,4 +36,22 @@ public class FilePeration {
 		}
 	}
 	
+	
+	// 2. RandomAccessFile
+	// 2.1. 创建对象
+	// 2.1.1. 【创建对象】简介
+	// Java提供了一个可以对文件随机访问的操作，访问包括度和写操作。该类名为RandomAccessFile。该类的读写时基于指针的操作。
+	
+	// 2.1.2. 【创建对象】只读模式
+	// RandomAccessFile在对文件进行随机访问操作时有两个模式分别为只读模式和读写模式。
+	// 只读模式：在创建RandomAccessFile时，其提供的构造方法要求我们传入访问模式：
+	// RandomAccessFile(File file, String mode)
+	// RandomAccessFile(String fileName, String mode)
+	// 其中狗仔方法的第一个参数是需要访问的文件，而第二个参数则是访问模式：字符串“r”表示对该文件的访问时只读的。
+	
+	// 2.1.3. 【创建对象】读写模式
+	// 创建一个基于文件访问的读写模式的RandomAccessFile，我们只需要在第二个参数中传入“rw”即可。
+	// RandomAccessFile raf = new RandomAccessFile(file, "rw");
+	// 那么这时在使用RandomAccessFile对该文件的访问就是又可读又可写的。
+	
 }

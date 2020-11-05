@@ -54,4 +54,12 @@ public class FilePeration {
 	// RandomAccessFile raf = new RandomAccessFile(file, "rw");
 	// 那么这时在使用RandomAccessFile对该文件的访问就是又可读又可写的。
 	
+	
+	// 2.2. 字节数据读写操作
+	// 2.2.1. 【字节数据读写操作】write(int d)方法
+	// RandomAccessFile提供了一个可以向文件中写出字节的方法：void write(int d)
+	// 该方法会根据当前指针所在位置处写入一个字节，是将参数int的“低8位”写出
+	
+	// 2.2.2. 【字节数据读写操作】read()方法
+	// 
 }

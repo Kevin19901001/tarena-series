@@ -5,7 +5,7 @@ import java.io.FileFilter;
 
 import org.junit.Test;
 
-public class FilePeration {
+public class Case01FilePeration {
 
 	// 1. 文件操作 File
 	// 1.1. File表示目录信息
@@ -72,4 +72,15 @@ public class FilePeration {
 	// 该方法会根据当前指针所在位置处连续写出给定数组中的部分字节，这个部分是从数组的offset处开始，连续len个字节。
 	
 	// 2.2.4. 【字节数据读写操作】read(byte[] b)
+	// RandomAccessFile提供了一个可以从文件中批量读取字节的方法：int read(byte[] b)
+	// 该方法会从指定位置处尝试最多读取给定数组的总长度的字节量，并从给定的字节数组第一个位置开始，将读取到的字节顺序存放至数组中，返回值为实际读取到的字节量。
+	
+	// 2.2.5. 【字节数据读写操作】close()方法
+	// RandomAccessFile在对文件访问的操作全部结束后，要调用close()方法来释放与其关联的所有系统资源：void close()
+	// RandomAccessFile raf = new RandomAccessFile(file, "r");
+	// raf.close();
+	// 访问完毕后要关闭以释放系统资源。
+	
+	
+	// 2.3. 【文件指针操作】
 }

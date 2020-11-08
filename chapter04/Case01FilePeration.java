@@ -83,4 +83,24 @@ public class Case01FilePeration {
 	
 	
 	// 2.3. 【文件指针操作】
+	// 2.3.1. 【文件指针操作】getFilePointer()
+	// RandomAccessFile的读写操作都是基于指针的，也就是说总是在指针所指向的当前位置进行读写操作。
+	// long getFilePointer()：该方法用于获取当前RandomAccessFile的指针位置。
+	// RandomAccessFile raf = new RandomAccessFile(file, "rw");
+	// System.out.println(raf.getFilePointer());	// 0
+	
+	// raf.write('A');
+	// System.out.println(raf.getFilePointer());	// 1
+	
+	// raf.writeInt(3);
+	// System.out.println(raf.getFilePointer());	// 5
+	
+	// raf.close();
+	
+	// 2.3.2. 【文件指针操作】seek()方法
+	// RandomAccessFile提供了一个方法用于移动指针位置。
+	// void seek(long pos)：该方法用于移动当前RandomAccessFile的指针位置。
+	// raf.seek(0);
+	// System.out.println(raf.getFilePointer());	// 0
+	// raf.close();
 }

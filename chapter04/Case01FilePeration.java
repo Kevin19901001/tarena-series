@@ -103,4 +103,9 @@ public class Case01FilePeration {
 	// raf.seek(0);
 	// System.out.println(raf.getFilePointer());	// 0
 	// raf.close();
+	
+	// 2.3.3. 【文件指针操作】skipBytes()方法
+	// RandomAccessFile提供了一个方法可以尝试跳过输入的n个字节以丢弃跳过的字节：int skipBytes(int n)
+	// 该方法可能跳过一些较少数量的字节（可能包括零）。这可能又任意数量的条件引起；在跳过n个字节之前已到达文件的末尾只是其中一个可能。
+	// 此方法不抛出EOFException。返回跳过的实际字节数。如果n为负数则不跳过任何字节。
 }

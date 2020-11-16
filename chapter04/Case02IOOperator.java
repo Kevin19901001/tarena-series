@@ -33,4 +33,9 @@ public class Case01IOOperator {
 	
 	
 	// 1.2. 【文件流】
+	// 1.2.1. 【文件流】创建FOS对象，重写模式
+	// FileOutputStream是文件的字节输出流，我们使用该流可以以字节为单位将数据写入文件。
+	// 构造方法：FileOutputStream(File file)：创建一个向指定File对象表示的文件中写出数据的文件输出流。
+	// FileOutputStream(String filename)：创建一个向具有指定名称的文件中写出数据的文件输出流。
+	// 这里需要注意的是，若指定的文件已经包含内容，那么当使用FOS对其写入数据时，会将该文件中原有数据全部清除。
 }

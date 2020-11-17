@@ -38,4 +38,13 @@ public class Case01IOOperator {
 	// 构造方法：FileOutputStream(File file)：创建一个向指定File对象表示的文件中写出数据的文件输出流。
 	// FileOutputStream(String filename)：创建一个向具有指定名称的文件中写出数据的文件输出流。
 	// 这里需要注意的是，若指定的文件已经包含内容，那么当使用FOS对其写入数据时，会将该文件中原有数据全部清除。
+	
+	// 1.2.2. 【文件流】创建FOS对象，追加模式
+	// 通过上一节的构造方法创建的FOS对文件进行写操作时，会覆盖文件中的原有数据。若想在文件的原有数据之后追加新数据则需要以下构造方法创建FOS。
+	// FileOutputStream(File file, boolean append)：创建一个向指定File对象表示的文件中写出数据的文件输出流。
+	// FileOutputStream(String filename, boolean append)：创建一个向具有指定名称的文件中写出数据的文件输出流。
+	// 以上两个构造方法中，第二个参数若为true，那么通过FOS写出的数据都是在文件末尾追加的。
+	
+	// 1.2.3. 【文件流】创建FIS对象
+	// 
 }

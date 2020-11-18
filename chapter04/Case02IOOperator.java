@@ -46,5 +46,20 @@ public class Case01IOOperator {
 	// 以上两个构造方法中，第二个参数若为true，那么通过FOS写出的数据都是在文件末尾追加的。
 	
 	// 1.2.3. 【文件流】创建FIS对象
-	// 
+	// FileInputStream是文件的字节输入流，我们使用该流可以以字节为单位从文件中读取数据。
+	// 两个常用的构造方法：
+	// FIleInputStream(File file)：创建一个从指定File对象表示的文件中读取数据的文件输入流。
+	// FileInputStream(String name)：创建用于读取给定的文件系统中的路径名name所指定的文件的文件输入流。
+	
+	// 1.2.4. 【文件流】read()和write(int d)方法：
+	// FileInputStream继承自InputStream，其提供了以字节为单位读取文件数据的方法read()：从此输入流中读取一个数据字节，若返回-1则表示EOF。
+	// FileOutputStream继承自OutputStream，其提供了以字节为单位向文件写数据的方法write(int d)：将指定的字节写入此文件输出流，这里只写给定的int值的低8位。
+	
+	// 1.2.5. 【文件流】read(byte[] d)和write(byte[] d)
+	// FileInputStream也支持批量读取数据的方法：int read(byte[] d)：从此输入流中将最多d.length个字节的数据读入到字节数组d中。
+	// FileOutputStream也支持批量写出字节数据的方法：void write(byte[] d)：将d.length个字节从指定的字节数组写入到此文件输出流中。
+	// void write(byte[] d, int offset, int length)：将指定byte数组中从偏移量offset开始的length个字节写入此文件输出流。
+	
+	
+	// 1.3. 【缓冲流】
 }

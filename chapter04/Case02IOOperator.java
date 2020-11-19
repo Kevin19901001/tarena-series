@@ -1,5 +1,10 @@
 package chapter04;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+
+import org.junit.Test;
+
 /**
  * IO基本操作
  * @author HuanQing
@@ -62,4 +67,30 @@ public class Case01IOOperator {
 	
 	
 	// 1.3. 【缓冲流】
+	// 1.3.1. 【缓冲流】BOS基本工作原理
+	// 在向硬件设备做写出操作时，增大写出次数无疑会降低写出效率，为此我们可以使用缓冲输出流来一次性批量写出若干数据减少写出次数来提高写出效率。
+	// BufferedOutputStream缓冲输出流内部维护着一个缓冲区，每当我们向该流写数据时，都会先将数据存入缓冲区，当缓冲区已满时，缓冲流会将数据一次性全部写出。
+	
+	// 1.3.2. 【缓冲流】BOS实现写出缓冲
+	@Test
+	public void testBos() throws Exception {
+		FileOutputStream fos = new FileOutputStream("demo.dat");
+		
+		// 创建缓冲字节输出流
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		
+		// 所有字节被存入缓冲区
+		bos.write("Hello, World!".getBytes());
+		
+		// 关闭流之前，缓冲输出流会将缓冲内容一次性写出
+		bos.close();
+	}
+	
+	// 1.3.3. 【缓冲流】BOS的flush()方法
+	// 使用缓冲输出流可以提高写出效率，但是这也存在着一个问题，就是写出数据缺乏及时性。
+	// 有时我们需要在执行完某些写出操作后，就希望将这些数据确实写出，而非在缓冲区中保存知道缓冲区满后才写出。
+	// 这时我们可以使用缓冲流的一个方法：void flush()：清空缓冲区，将缓冲区中的数据强制写出。
+	
+	// 1.3.4. 【缓冲流】BIS基本工作原理
+	// 
 }

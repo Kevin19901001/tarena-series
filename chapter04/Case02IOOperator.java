@@ -1,6 +1,8 @@
 package chapter04;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import org.junit.Test;
@@ -10,7 +12,7 @@ import org.junit.Test;
  * @author HuanQing
  * @since 2020-11-10
  */
-public class Case01IOOperator {
+public class Case02IOOperator {
 
 	// 1. 【基本IO操作】
 	// 1.1. 【IS与OS】
@@ -92,5 +94,31 @@ public class Case01IOOperator {
 	// 这时我们可以使用缓冲流的一个方法：void flush()：清空缓冲区，将缓冲区中的数据强制写出。
 	
 	// 1.3.4. 【缓冲流】BIS基本工作原理
-	// 
+	// 在读取数据时，若以字节为单位读取数据，会导致读取次数过于频繁，从而大大地降低读取效率。
+	// 为此我们可以通过提高一次性读取的字节数量减少读取的次数来提高读取的效率。
+	// BufferedInputStream是缓冲字节输入流，其内部维护着一个缓冲区（字节数组），使用该流在读取一个字节时该流会尽可能多的一次性读取若干字节并存入缓冲区。
+	// 然后逐一地将字节返回，知道缓冲区中的数据被全部读取完毕，会再次读取若干字节，从而反复。
+	// 这样就减少了读取的次数，从而提高了读取效率。
+	// BIS是一个处理流，该流为我们提供了缓冲功能。
+	
+	// 1.3.5. 【缓冲流】BIS实现输入缓冲
+	@Test
+	public void testBis() throws Exception {
+		// 创建缓冲字节输入流
+		FileInputStream fis = new FileInputStream("demo.dat");
+		
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		
+		int d = -1;
+		
+		// 缓冲读入，实际上并非是一个字节一个字节地从文件读取的
+		while((d = bis.read()) != -1) {
+			System.out.print(d + " ");
+		}
+		
+		bis.close();
+	}
+	
+	
+	// 1.4. 【对象流】
 }

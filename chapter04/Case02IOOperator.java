@@ -134,5 +134,11 @@ public class Case02IOOperator {
 	// ObjectInputStream是用来对对象进行饭序列化的输入流
 	// 其实现对象反序列化的方法为： Object readObject()：该方法可以从流中读取字节并转换为对应的对象。
 	
-	// 1.4.4. 
+	// 1.4.4. 【对象六】Serializable接口
+	// ObjectOutputStream在对对象进行序列化时有一个要求，就是需要序列化的对象所属的类必须实现Serializable接口。
+	// 实现该接口不需要重写任何方法。其只是作为可序列化的标识。
+	// 通常实现该接口的类需要提供一个常量serialVersionUID，表明该类的版本。
+	// 若不显式地声明，在对象序列化时也会根据当前类的各个方面计算该类的默认serialVersionUID，但不同平台编译器的实现有所不同，所以若想跨平台，都应显式地声明版本号。
+	// 如果声明地类地对象序列化存到硬盘上面，之后随着需求地变化更改了类地属性，那么当反序列化时，就会出现InvalidClassException，这样会造成不兼容性地问题。
+	// 但当serialVersionUID相同时，它就会将不一样地field以type地预设值反序列化，可避开不兼容性问题。
 }

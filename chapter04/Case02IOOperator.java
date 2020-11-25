@@ -4,6 +4,9 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import org.junit.Test;
 
@@ -141,4 +144,67 @@ public class Case02IOOperator {
 	// 若不显式地声明，在对象序列化时也会根据当前类的各个方面计算该类的默认serialVersionUID，但不同平台编译器的实现有所不同，所以若想跨平台，都应显式地声明版本号。
 	// 如果声明地类地对象序列化存到硬盘上面，之后随着需求地变化更改了类地属性，那么当反序列化时，就会出现InvalidClassException，这样会造成不兼容性地问题。
 	// 但当serialVersionUID相同时，它就会将不一样地field以type地预设值反序列化，可避开不兼容性问题。
+	
+	// 1.4.5. 【对象流】transient关键字
+	// 对象在序列化后得到的字节往往比较大，有时我们在对一个对象进行序列化时，可以忽略某些不必要的属性，从而对序列化后得到的字节序列“瘦身”。
+	// transient，被该关键字修饰的属性在序列化时其值将被忽略。
+	
+	
+	
+	// 2. 【文件数据IO操作】
+	// 2.1. 【Reader和Writer】
+	// 2.1.1. 【Reader和Writer】字符流原理
+	// Reader是字符输入流的父类，Writer是字符输出流的父类
+	// 字符流是以字符（char）为单位进行读写数据的。一次处理一个unicode。
+	// 字符流的底层仍然是基本的字节流。
+	
+	// 2.1.2. 【Reader和Writer】常用方法
+	// Reader的常用方法：
+	// int read()：读取一个字符，返回读取的int值“低16位”有效
+	// int read(char[] chars)：从该流中读取一个字符数组的length个字符并存入该数组，返回值位实际读取到的字符量。
+	// Writer的常用方法：
+	// void write(int c)：写出一个字符，写出给定int值“低16”位表示的字符。
+	// void write(char[] chars)：将给定字符数组中所有字符写出。
+	// void write(String str)：写出给定字符串。
+	// void write(char[] chars, int offset, int length)：将给定的字符数组中从offset处开始连续length个字符写出。
+	
+	
+	// 2.2. 【转换流】
+	// 2.2.1. 【转换流】字符转换流原理
+	// InputStreamReader：字符输入流
+	// 使用该流可以设置字符集，并按照指定的字符集从流中按照该编码将字节数据转换为字符并读取。
+	// OutputStreamWriter：字符输出流
+	// 使用该流可以设置字符集，并按照指定的字符集将字符转换为对应字节后通过该流写出。
+	
+	// 2.2.2. 【转换流】指定字符编码
+	// InputStreamReader的构造方法允许我们设置字符集：
+	// InputStreamReader(InputStream is, String charsetName)：基于给定的字节输入流以及字符编码创建ISR。
+	// InputStreamReader(InputStream is)：该构造方法会根据系统默认字符集创建ISR。
+	// OutputStreamWriter的构造方法：
+	// OutputStreamReader(OutputStream os, String charsetName)：基于给定的字节输入流以及字符编码创建OSW。
+	// OutputStreamReader(OutputStream os)：该构造方法会根据系统默认字符集创建OSW。
+	
+	// 2.2.3. 【转换流】使用OSW
+	@Test
+	public void testOutput() throws IOException {
+		FileOutputStream fos = new FileOutputStream("demo.txt");
+		OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");	// 在构造方法中设置字符集
+		String str = "大家好！";
+		osw.write(str);
+		osw.close();
+		
+	}
+	
+	// 2.2.4. 【转换流】使用ISR
+	@Test
+	public void testInput() throws IOException {
+		FileInputStream fis = new FileInputStream("demo.txt");
+		InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+		int c = -1;
+		while((c = isr.read()) != -1) {
+			System.out.println((char) c);
+		}
+		isr.close();
+		
+	}
 }

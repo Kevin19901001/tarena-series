@@ -1,8 +1,13 @@
 package chapter04;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import org.junit.Test;
 
@@ -94,5 +99,155 @@ public class Case02Excercise {
 		System.out.println("复制完毕！");
 		fis.close();
 		fos.close();
+	}
+	
+	
+	
+	// 4. 实现基于缓存区的文件复制
+	/**
+	 * 使用BufferedOutputStream和BufferedInputStream实现文件的复制，复制fos.dat为fos_copy3.dat
+	 * @throws Exception
+	 */
+	@Test
+	public void testBisAndBos() throws Exception {
+		FileInputStream fis = new FileInputStream("fos.dat");
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		
+		FileOutputStream fos = new FileOutputStream("fos_copy3.dat");
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		
+		int d = -1;
+		
+		while((d = bis.read()) != -1) {
+			bos.write((char)d);
+		}
+		
+		System.out.println("复制完毕！");
+		
+		bis.close();
+		bos.close();
+	}
+	
+	
+	
+	// 5. 实现存储Emp的序列化和反序列化
+	/**
+	 * 使用OOS实现对象的序列化
+	 * @throws Exception
+	 */
+	@Test
+	public void testOisAndOos() throws Exception {
+		Emp zhangsan = new Emp("张三", 15, '男', 4000.00);
+		
+		FileOutputStream fos = new FileOutputStream("emp.obj");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		
+		oos.writeObject(zhangsan);
+		System.out.println("序列化完毕！");
+		oos.close();
+		
+		FileInputStream fis = new FileInputStream("emp.obj");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		Emp inputZhangsan = (Emp) ois.readObject();
+		System.out.println("反序列化完毕！\n" + inputZhangsan);
+		
+		ois.close();
+	}
+	
+	
+	
+	// 6. 按照指定编码将文本写入文件
+	
+}
+
+class Emp implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private String name;
+	private int age;
+	private char gender;
+	private double sal;
+	
+	public Emp(String name, int age, char gender, double sal) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.sal = sal;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	public double getSal() {
+		return sal;
+	}
+
+	public void setSal(double sal) {
+		this.sal = sal;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + gender;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(sal);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Emp other = (Emp) obj;
+		if (age != other.age)
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(sal) != Double.doubleToLongBits(other.sal))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Emp [name=" + name + ", age=" + age + ", gender=" + gender + ", sal=" + sal + "]";
 	}
 }

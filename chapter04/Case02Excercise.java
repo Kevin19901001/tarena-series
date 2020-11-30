@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 
 import org.junit.Test;
@@ -158,7 +159,27 @@ public class Case02Excercise {
 	
 	
 	// 6. 按照指定编码将文本写入文件
+	// 使用特定的编码，输出字符，并生成文本文件
+	/**
+	 * 按照指定的编码将字符串写出
+	 * @throws Exception
+	 */
+	@Test
+	public void testCharSet() throws Exception{
+		FileOutputStream fos = new FileOutputStream("osw.txt");
+		OutputStreamWriter osw = new OutputStreamWriter(fos, "gbk");
+		
+		osw.write("Mr 范");
+		osw.close();
+	}
 	
+	
+	
+	// 7. 读出指定编码的文本文件
+	@Test
+	public void testRead() throws Exception{
+		
+	}
 }
 
 class Emp implements Serializable {

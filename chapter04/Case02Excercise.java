@@ -5,6 +5,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
@@ -176,9 +177,20 @@ public class Case02Excercise {
 	
 	
 	// 7. 读出指定编码的文本文件
+	/**
+	 * 使用指定的编码，读取上一个案例中所创建的文本文件中的内容，并打印到控制台
+	 * @throws Exception
+	 */
 	@Test
 	public void testRead() throws Exception{
+		FileInputStream fis = new FileInputStream("osw.txt");
+		InputStreamReader isr = new InputStreamReader(fis, "gbk");
 		
+		int d = -1;
+		while((d = isr.read()) != -1) {
+			System.out.print((char)d);
+		}
+		isr.close();
 	}
 }
 

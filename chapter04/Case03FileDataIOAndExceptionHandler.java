@@ -7,6 +7,8 @@ package chapter04;
  */
 public class Case03FileDataIOAndExceptionHandler {
 
-	
+	// 1. 文件数据IO操作
+	// 1.1. PrintWriter
+	// 1.1.1. 【PrintWriter】创建PW对象
 	
 }
